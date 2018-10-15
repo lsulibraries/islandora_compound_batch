@@ -35,7 +35,7 @@ class IslandoraCompoundBatchPreprocessor extends IslandoraBatchPreprocessor {
     // Accumulate a list of the objects added to the queue.
     $added = array();
 
-    $input_path = $this->$path_to_input_files;
+    $input_path = $this->parameters['target'];
     // Add batchset_id property for use later in ingest phase in object.inc
     // $batch_object->batchset_id = $this->getSetId();
     $this->parameters['set_id'] = $this->getSetId();
