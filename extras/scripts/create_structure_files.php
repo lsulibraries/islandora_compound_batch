@@ -122,7 +122,7 @@ function directoryXML($directory_path, $state = NULL) {
 
   $dir_name = basename($directory_path);
   if (!is_null($state)) {
-    echo $state . PHP_EOL;
+    //echo $state . PHP_EOL;
     $xml = "<directory name='" . $state . "/" . $dir_name . "'>";
   }
   else {

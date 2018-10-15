@@ -18,11 +18,11 @@ class IslandoraCompoundBatchPreprocessor extends IslandoraBatchPreprocessor {
    * Function to get the OBJ XML files from the input directory.
    */
   public function preprocess() {
+    $path_to_input_files = '';
     if (strtolower($this->parameters['icbp_verbose']) == 'true') {
       $this->icbpVerbose = TRUE;
     }
     if (isset($this->parameters['type']) && $this->parameters['type'] == 'zip') {
-      // @todo: Add a check for a falase return here.
       $path_to_input_files = $this->openZip($this->parameters['target']);
       require_once 'structure.inc';
       $base_path = DRUPAL_ROOT;
@@ -196,14 +196,12 @@ class IslandoraCompoundBatchPreprocessor extends IslandoraBatchPreprocessor {
    */
   protected function openZip($zip_uri) {
     $zip = new ZipArchive();
-
     $zip_file = drupal_realpath($zip_uri);
     if (($error = $zip->open($zip_file)) !== TRUE) {
       return FALSE;
     }
     $tmp_path = file_directory_temp() . DIRECTORY_SEPARATOR . pathinfo($zip_file, PATHINFO_FILENAME);
     $zip->extractTo($tmp_path);
-
     $zip->close();
     return $tmp_path;
   }

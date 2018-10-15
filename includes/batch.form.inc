@@ -58,7 +58,7 @@ function islandora_compound_batch_form($form, &$form_state, $object) {
  * May kick off a batch process.
  */
 function islandora_compound_batch_form_submit($form, $form_state) {
-  module_load_include('.inc', 'islandora_compound_batch', 'includes/preprocessor');
+  module_load_include('inc', 'islandora_compound_batch', 'includes/preprocessor');
   $target = file_load($form_state['values']['target']);
 
   $form_state['values']['target'] = $target->uri;
